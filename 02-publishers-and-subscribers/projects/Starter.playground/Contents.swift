@@ -4,7 +4,10 @@ import _Concurrency
 
 var subscriptions = Set<AnyCancellable>()
 
-<#Add your code here#>
+example(of: "Publisher") {
+  let myNotification = Notification.Name("MyNotification")
+  let publisher = NotificationCenter.default.publisher(for: myNotification, object: nil)
+}
 
 /// Copyright (c) 2021 Razeware LLC
 ///
