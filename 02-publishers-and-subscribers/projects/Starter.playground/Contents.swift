@@ -35,6 +35,19 @@ example(of: "Subscriber") {
 }
 
 
+example(of: "Just") {
+  let just = Just("Hello world!")
+  
+  _ = just
+    .sink(
+      receiveCompletion: {
+        print("Received completion", $0)
+      }, receiveValue: {
+        print("Received value", $0)
+      })
+}
+
+
 /// Copyright (c) 2021 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
