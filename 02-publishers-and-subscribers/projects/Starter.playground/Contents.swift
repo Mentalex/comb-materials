@@ -19,6 +19,22 @@ example(of: "Publisher") {
   center.removeObserver(observer)
 }
 
+example(of: "Subscriber") {
+  let myNotification = Notification.Name("MyNotification")
+  let center = NotificationCenter.default
+  
+  let publisher = center.publisher(for: myNotification, object: nil)
+  
+  let subscription = publisher.sink { _ in
+    print("Notification received from a publisher!")
+  }
+  
+  center.post(name: myNotification, object: nil)
+  
+  subscription.cancel()
+}
+
+
 /// Copyright (c) 2021 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
