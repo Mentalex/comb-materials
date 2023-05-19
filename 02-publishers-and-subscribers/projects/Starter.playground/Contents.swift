@@ -55,6 +55,20 @@ example(of: "Just") {
       })
 }
 
+example(of: "assign(to:on)") {
+  class SomeObject {
+    var value: String = "" {
+      didSet { print(value) }
+    }
+  }
+  
+  let someObject = SomeObject()
+  
+  let publisher = ["Hello", "world!"].publisher
+  
+  _ = publisher.assign(to: \.value, on: someObject)
+}
+
 
 /// Copyright (c) 2021 Razeware LLC
 ///
