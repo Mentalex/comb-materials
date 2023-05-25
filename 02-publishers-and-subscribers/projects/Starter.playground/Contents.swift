@@ -69,6 +69,20 @@ example(of: "assign(to:on)") {
   _ = publisher.assign(to: \.value, on: someObject)
 }
 
+example(of: "assign(to:)") {
+  class SomeObject {
+    @Published var value = 0
+  }
+  
+  let object = SomeObject()
+  object.$value
+    .sink { print($0) }
+  
+  // Republish
+  (0..<10).publisher
+    .assign(to: &object.$value)
+}
+
 
 /// Copyright (c) 2021 Razeware LLC
 ///
